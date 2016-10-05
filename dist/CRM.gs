@@ -49,14 +49,16 @@ function api3(entity, action, params) {
       key: config_.key,
       api_key: config_.api_key
     };
-  } else {
+  } /* else {
     params = {
       entity: 'api3',
       action: 'call',
-      json: JSON.stringify(entity)
+      json: JSON.stringify(entity),
+      key: config_.key,
+      api_key: config_.api_key
     };
     status = action;
-  }
+  }*/
   var options = {
     method: params.action.indexOf('get') < 0 ? 'POST' : 'POST', // do everything as POST  
     payload: params
@@ -70,8 +72,6 @@ function api3(entity, action, params) {
    return new Promise (function ( resolve, reject ) {
       try {
         options = options || {};
-        Logger.log(url);
-        Logger.log(options);
         var result = UrlFetchApp.fetch (url , options);
         resolve (JSON.parse(result.getContentText()));
       }
