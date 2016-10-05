@@ -129,11 +129,11 @@ function updateEventTypeList(){
       var sheet = doc.getSheetByName('EventType');
       sheet.getRange(1, 1, sheet_out.length, 2).setValues(sheet_out);
       
-      var form = FormApp.openById('14Y4WKrha0CzjgiITjPjnY1PbR0_urD0elBq_4lQERlo');
+      var form = FormApp.openById('14Y4WKrha0CzjgiITjPjnY1PbR0_urD0elBq_4lQERlo'); // add your own Google Form Id here
       var items = form.getItems();
       var eventTypeItem;
       items.map(function(item, index) {
-        if (item.getTitle() == 'Event Type') {
+        if (item.getTitle() == 'Event Type') { // assumes your Form has a Select List option named 'Event Type' 
           eventTypeItem = item;
         }
       });
